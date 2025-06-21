@@ -8,13 +8,6 @@
 </head>
 <body class="bg-gray-100 flex justify-center items-center h-screen">
     <div id="app" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <!-- Admin Section -->
-        <div id="admin-section" class="mb-6 hidden">
-            <h2 class="text-2xl font-bold mb-4 text-center">Admin: Upload Questions</h2>
-            <input type="file" id="question-file" accept=".json" class="mb-4 w-full">
-            <button id="upload-btn" class="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600">Upload</button>
-        </div>
-
         <!-- User Section -->
         <div id="user-section">
             <h2 class="text-2xl font-bold mb-4 text-center">Quiz App</h2>
@@ -40,8 +33,6 @@
     </div>
 
     <script>
-        const questionFileInput = document.getElementById('question-file');
-        const uploadBtn = document.getElementById('upload-btn');
         const numQuestionsInput = document.getElementById('num-questions');
         const startQuizBtn = document.getElementById('start-quiz');
         const questionText = document.getElementById('question-text');
@@ -53,44 +44,39 @@
         const resultDiv = document.getElementById('result');
         const scoreText = document.getElementById('score-text');
         const restartBtn = document.getElementById('restart-btn');
-        const adminSection = document.getElementById('admin-section');
 
         let questions = JSON.parse(localStorage.getItem('questions')) || [];
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
         let selectedAnswer = null;
-        let answers = []; // Track user answers for navigation
+        let answers = [];
 
-        // Check if URL has ?admin to show admin section
-        if (window.location.search.includes('admin')) {
-            adminSection.classList.remove('hidden');
-        }
-
-        // Handle JSON upload
-        uploadBtn.addEventListener('click', () => {
-            const file = questionFileInput.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        const uploadedQuestions = JSON.parse(e.target.result);
-                        questions = uploadedQuestions;
-                        localStorage.setItem('questions', JSON.stringify(questions));
-                        alert('Questions uploaded successfully!');
-                    } catch (err) {
-                        alert('Invalid JSON format.');
-                    }
-                };
-                reader.readAsText(file);
+        // Fetch questions from GitHub on page load
+        async function loadQuestionsFromGitHub() {
+            const repoOwner = 'Disav0wed'; // Replace with your GitHub username
+            const repoName = 'GermanQuiz'; // Replace with your repository name
+            const filePath = 'questions.json';
+            try {
+                const response = await fetch(`https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${filePath}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    questions = data;
+                    localStorage.setItem('questions', JSON.stringify(questions));
+                } else {
+                    console.log('Failed to fetch questions.json:', response.status);
+                }
+            } catch (err) {
+                console.log('Error fetching questions.json:', err);
             }
-        });
+        }
+        loadQuestionsFromGitHub();
 
         // Start quiz
         startQuizBtn.addEventListener('click', () => {
             const numQuestions = parseInt(numQuestionsInput.value);
             if (questions.length === 0) {
-                alert('No questions available. Please upload questions first.');
+                alert('No questions available. Please ensure questions.json is in the repository.');
                 return;
             }
             if (numQuestions > questions.length) {
@@ -100,7 +86,7 @@
             currentQuestions = questions.sort(() => Math.random() - 0.5).slice(0, numQuestions);
             currentQuestionIndex = 0;
             score = 0;
-            answers = new Array(numQuestions).fill(null); // Reset answers array
+            answers = new Array(numQuestions).fill(null);
             quizSetup.classList.add('hidden');
             quizDiv.classList.remove('hidden');
             displayQuestion();
@@ -115,7 +101,6 @@
                 const btn = document.createElement('button');
                 btn.className = 'w-full p-2 border rounded hover:bg-gray-100';
                 btn.textContent = option;
-                // Highlight if previously answered
                 if (answers[currentQuestionIndex] === index) {
                     btn.classList.add(
                         index === question.correctAnswer ? 'bg-green-200' : 'bg-red-200'
@@ -129,4 +114,68 @@
         }
 
         // Check answer
-        function checkAnswer(selectedIndex
+        function checkAnswer(selectedIndex, button) {
+            if (selectedAnswer !== null) return;
+            selectedAnswer = selectedIndex;
+            answers[currentQuestionIndex] = selectedIndex;
+            const question = currentQuestions[currentQuestionIndex];
+            button.classList.add(
+                selectedIndex === question.correctAnswer ? 'bg-green-200' : 'bg-red-200'
+            );
+            if (selectedIndex === question.correctAnswer) {
+                score++;
+            }
+            const buttons = optionsDiv.querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+            updateNavigationButtons();
+        }
+
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = currentQuestionIndex === currentQuestions.length - 1;
+            if (currentQuestionIndex === currentQuestions.length - 1 && answers[currentQuestionIndex] !== null) {
+                nextBtn.textContent = 'Finish';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+            selectedAnswer = null;
+        }
+
+        // Previous question
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        });
+
+        // Next question or finish
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        // Show result
+        function showResult() {
+            quizDiv.classList.add('hidden');
+            resultDiv.classList.remove('hidden');
+            scoreText.textContent = `You scored ${score} out of ${currentQuestions.length}!`;
+        }
+
+        // Restart quiz
+        restartBtn.addEventListener('click', () => {
+            resultDiv.classList.add('hidden');
+            quizSetup.classList.remove('hidden');
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            score = 0;
+            answers = [];
+        });
+    </script>
+</body>
+</html>
