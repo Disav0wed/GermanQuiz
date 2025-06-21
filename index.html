@@ -26,7 +26,10 @@
             <div id="quiz" class="hidden">
                 <h3 id="question-text" class="text-lg font-semibold mb-4"></h3>
                 <div id="options" class="space-y-2"></div>
-                <button id="next-btn" class="bg-blue-500 text-white px-4 py-2 rounded w-full mt-4 hover:bg-blue-600 hidden">Next</button>
+                <div class="flex justify-between mt-4">
+                    <button id="prev-btn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed">Previous</button>
+                    <button id="next-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed">Next</button>
+                </div>
             </div>
             <div id="result" class="hidden">
                 <h3 class="text-xl font-bold mb-4 text-center">Quiz Completed!</h3>
@@ -43,6 +46,7 @@
         const startQuizBtn = document.getElementById('start-quiz');
         const questionText = document.getElementById('question-text');
         const optionsDiv = document.getElementById('options');
+        const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         const quizSetup = document.getElementById('quiz-setup');
         const quizDiv = document.getElementById('quiz');
@@ -55,6 +59,8 @@
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
+        let selectedAnswer = null;
+        let answers = []; // Track user answers for navigation
 
         // Check if URL has ?admin to show admin section
         if (window.location.search.includes('admin')) {
@@ -94,6 +100,7 @@
             currentQuestions = questions.sort(() => Math.random() - 0.5).slice(0, numQuestions);
             currentQuestionIndex = 0;
             score = 0;
+            answers = new Array(numQuestions).fill(null); // Reset answers array
             quizSetup.classList.add('hidden');
             quizDiv.classList.remove('hidden');
             displayQuestion();
@@ -102,49 +109,24 @@
         // Display current question
         function displayQuestion() {
             const question = currentQuestions[currentQuestionIndex];
-            questionText.textContent = question.question;
+            questionText.textContent = `${currentQuestionIndex + 1}. ${question.question}`;
             optionsDiv.innerHTML = '';
             question.options.forEach((option, index) => {
                 const btn = document.createElement('button');
                 btn.className = 'w-full p-2 border rounded hover:bg-gray-100';
                 btn.textContent = option;
-                btn.addEventListener('click', () => checkAnswer(index));
+                // Highlight if previously answered
+                if (answers[currentQuestionIndex] === index) {
+                    btn.classList.add(
+                        index === question.correctAnswer ? 'bg-green-200' : 'bg-red-200'
+                    );
+                    btn.disabled = true;
+                }
+                btn.addEventListener('click', () => checkAnswer(index, btn));
                 optionsDiv.appendChild(btn);
             });
+            updateNavigationButtons();
         }
 
         // Check answer
-        function checkAnswer(selectedIndex) {
-            const question = currentQuestions[currentQuestionIndex];
-            if (selectedIndex === question.correctAnswer) {
-                score++;
-            }
-            nextBtn.classList.remove('hidden');
-        }
-
-        // Next question
-        nextBtn.addEventListener('click', () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < currentQuestions.length) {
-                displayQuestion();
-                nextBtn.classList.add('hidden');
-            } else {
-                showResult();
-            }
-        });
-
-        // Show result
-        function showResult() {
-            quizDiv.classList.add('hidden');
-            resultDiv.classList.remove('hidden');
-            scoreText.textContent = `You scored ${score} out of ${currentQuestions.length}!`;
-        }
-
-        // Restart quiz
-        restartBtn.addEventListener('click', () => {
-            resultDiv.classList.add('hidden');
-            quizSetup.classList.remove('hidden');
-        });
-    </script>
-</body>
-</html>
+        function checkAnswer(selectedIndex
