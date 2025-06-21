@@ -19,9 +19,13 @@
             <div id="quiz" class="hidden">
                 <h3 id="question-text" class="text-lg font-semibold mb-4"></h3>
                 <div id="options" class="space-y-2"></div>
-                <div class="flex justify-between mt-4">
+                <div class="flex justify-between items-center mt-6">
                     <button id="prev-btn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed">Previous</button>
+                    <span id="question-indicator" class="text-gray-600 font-medium"></span>
                     <button id="next-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed">Next</button>
+                </div>
+                <div class="mt-4">
+                    <button id="finish-btn" class="bg-red-500 text-white px-4 py-2 rounded w-full hover:bg-red-600">Finish Quiz</button>
                 </div>
             </div>
             <div id="result" class="hidden">
@@ -39,6 +43,8 @@
         const optionsDiv = document.getElementById('options');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
+        const finishBtn = document.getElementById('finish-btn');
+        const questionIndicator = document.getElementById('question-indicator');
         const quizSetup = document.getElementById('quiz-setup');
         const quizDiv = document.getElementById('quiz');
         const resultDiv = document.getElementById('result');
@@ -130,20 +136,13 @@
             updateNavigationButtons();
         }
 
-        // Update navigation buttons
+        // Update navigation buttons and indicator
         function updateNavigationButtons() {
             prevBtn.disabled = currentQuestionIndex === 0;
-            // Enable "Next" if not on last question and current question is unanswered
-            // Enable "Finish" on last question regardless of answers
-            nextBtn.disabled = currentQuestionIndex < currentQuestions.length - 1
-                ? answers[currentQuestionIndex] === null
-                : false;
-            if (currentQuestionIndex === currentQuestions.length - 1) {
-                nextBtn.textContent = 'Finish';
-            } else {
-                nextBtn.textContent = 'Next';
-            }
-            selectedAnswer = null;
+            nextBtn.disabled = currentQuestionIndex === currentQuestions.length - 1 ||
+                              answers[currentQuestionIndex] === null;
+            finishBtn.disabled = false; // Finish button always enabled
+            questionIndicator.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
         }
 
         // Previous question
@@ -154,14 +153,17 @@
             }
         });
 
-        // Next question or finish
+        // Next question
         nextBtn.addEventListener('click', () => {
             if (currentQuestionIndex < currentQuestions.length - 1) {
                 currentQuestionIndex++;
                 displayQuestion();
-            } else {
-                showResult();
             }
+        });
+
+        // Finish quiz
+        finishBtn.addEventListener('click', () => {
+            showResult();
         });
 
         // Show result
