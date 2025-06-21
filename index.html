@@ -69,6 +69,7 @@
                     const data = await response.json();
                     questions = data;
                     localStorage.setItem('questions', JSON.stringify(questions));
+                    console.log('Questions loaded:', questions.length);
                 } else {
                     console.log('Failed to fetch questions.json:', response.status);
                 }
@@ -112,11 +113,14 @@
                         index === question.correctAnswer ? 'bg-green-200' : 'bg-red-200'
                     );
                     btn.disabled = true;
+                } else {
+                    btn.disabled = false; // Ensure buttons are clickable if unanswered
                 }
                 btn.addEventListener('click', () => checkAnswer(index, btn));
                 optionsDiv.appendChild(btn);
             });
             updateNavigationButtons();
+            console.log('Displayed question:', currentQuestionIndex + 1, 'Answers:', answers);
         }
 
         // Check answer
@@ -134,21 +138,23 @@
             const buttons = optionsDiv.querySelectorAll('button');
             buttons.forEach(btn => btn.disabled = true);
             updateNavigationButtons();
+            console.log('Answer selected:', selectedIndex, 'Score:', score);
         }
 
         // Update navigation buttons and indicator
         function updateNavigationButtons() {
             prevBtn.disabled = currentQuestionIndex === 0;
-            nextBtn.disabled = currentQuestionIndex === currentQuestions.length - 1 ||
-                              answers[currentQuestionIndex] === null;
+            nextBtn.disabled = currentQuestionIndex === currentQuestions.length - 1;
             finishBtn.disabled = false; // Finish button always enabled
             questionIndicator.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+            console.log('Navigation updated: Prev:', prevBtn.disabled, 'Next:', nextBtn.disabled, 'Finish:', finishBtn.disabled);
         }
 
         // Previous question
         prevBtn.addEventListener('click', () => {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
+                selectedAnswer = null;
                 displayQuestion();
             }
         });
@@ -157,6 +163,7 @@
         nextBtn.addEventListener('click', () => {
             if (currentQuestionIndex < currentQuestions.length - 1) {
                 currentQuestionIndex++;
+                selectedAnswer = null;
                 displayQuestion();
             }
         });
@@ -171,6 +178,7 @@
             quizDiv.classList.add('hidden');
             resultDiv.classList.remove('hidden');
             scoreText.textContent = `You scored ${score} out of ${currentQuestions.length} (answered ${answers.filter(a => a !== null).length} questions)!`;
+            console.log('Quiz finished: Score:', score, 'Answered:', answers.filter(a => a !== null).length);
         }
 
         // Restart quiz
@@ -181,6 +189,7 @@
             currentQuestionIndex = 0;
             score = 0;
             answers = [];
+            selectedAnswer = null;
         });
     </script>
 </body>
