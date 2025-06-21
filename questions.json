@@ -1,0 +1,227 @@
+[
+    {
+        "question": "Wie sagt man 'X-ray' auf Deutsch?",
+        "options": ["Ultraschall", "Röntgen", "Bluttest", "Spritze"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was bedeutet 'Krankenschwester' im medizinischen Kontext?",
+        "options": ["Ärztin", "Patientin", "Pflegekraft", "Radiologin"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Wie heißt das Gerät, das Röntgenbilder macht?",
+        "options": ["Röntgengerät", "Stethoskop", "Blutdruckmessgerät", "Infusionspumpe"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Was sagt eine Krankenschwester, wenn sie einen Patienten bittet, still zu liegen während einer Röntgenaufnahme?",
+        "options": ["Bitte bewegen Sie sich schnell.", "Bitte bleiben Sie ruhig liegen.", "Bitte atmen Sie schnell.", "Bitte stehen Sie auf."],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie sagt man 'to take a blood sample' auf Deutsch?",
+        "options": ["Blutdruck messen", "Blutprobe entnehmen", "Blut reinigen", "Blut spenden"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Wort beschreibt den Bereich des Körpers, der bei einer Röntgenaufnahme untersucht wird?",
+        "options": ["Organ", "Region", "Gewebe", "Zelle"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie lautet die korrekte Anweisung auf Deutsch, um einen Patienten zu bitten, tief einzuatmen?",
+        "options": ["Atmen Sie flach.", "Halten Sie den Atem an.", "Atmen Sie tief ein.", "Atmen Sie schnell aus."],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Was bedeutet 'Verband' in einem Krankenhaus?",
+        "options": ["Medikament", "Bandage", "Krankenbett", "Spritze"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie heißt der Beruf desjenigen, der Röntgenbilder analysiert?",
+        "options": ["Krankenpfleger", "Radiologe", "Chirurg", "Anästhesist"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was sagt man auf Deutsch, um einen Patienten zu fragen, ob er Schmerzen hat?",
+        "options": ["Haben Sie Fieber?", "Haben Sie Schmerzen?", "Haben Sie Hunger?", "Haben Sie Durst?"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Wort verwendet man für 'Knochenbruch' auf Deutsch?",
+        "options": ["Fieber", "Fraktur", "Infektion", "Allergie"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie sagt man 'to disinfect a wound' auf Deutsch?",
+        "options": ["Eine Wunde verbinden", "Eine Wunde nähen", "Eine Wunde desinfizieren", "Eine Wunde kühlen"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Was bedeutet 'Patientenakte'?",
+        "options": ["Krankenwagen", "Medizinische Dokumentation", "Arztbesuch", "Krankenhausbett"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie lautet der Befehl, um einen Patienten zu bitten, den Arm zu heben, auf Deutsch?",
+        "options": ["Heben Sie den Kopf.", "Heben Sie den Arm.", "Heben Sie das Bein.", "Heben Sie die Hand."],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Gerät wird verwendet, um die Temperatur eines Patienten zu messen?",
+        "options": ["Thermometer", "Röntgengerät", "Blutdruckmessgerät", "Pulsoximeter"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Wie sagt man 'to measure blood pressure' auf Deutsch?",
+        "options": ["Blutdruck messen", "Puls fühlen", "Blutprobe nehmen", "Temperatur messen"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Was bedeutet 'Röntgenaufnahme'?",
+        "options": ["Bluttest", "Ultraschall", "Röntgenbild", "Herzuntersuchung"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Wie lautet die Anweisung, um einen Patienten zu bitten, den Mund zu öffnen?",
+        "options": ["Öffnen Sie die Augen.", "Öffnen Sie den Mund.", "Öffnen Sie die Hand.", "Öffnen Sie das Fenster."],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Wort beschreibt eine 'Infektion' im Krankenhaus?",
+        "options": ["Verletzung", "Krankheit durch Keime", "Knochenbruch", "Allergische Reaktion"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was sagt eine Krankenschwester, wenn sie einen Patienten bittet, sich auf die Waage zu stellen?",
+        "options": ["Bitte setzen Sie sich.", "Bitte legen Sie sich hin.", "Bitte stellen Sie sich auf die Waage.", "Bitte heben Sie den Arm."],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Wie heißt das Dokument, das die medizinischen Daten eines Patienten enthält?",
+        "options": ["Rezept", "Krankenbericht", "Terminplan", "Krankenversicherung"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was bedeutet 'Spritze' im medizinischen Kontext?",
+        "options": ["Nadel zur Injektion", "Tablette", "Pflaster", "Verband"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Wie sagt man 'to change a bandage' auf Deutsch?",
+        "options": ["Verband wechseln", "Verband entfernen", "Verband nähen", "Verband desinfizieren"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Welches Gerät wird verwendet, um den Herzschlag zu hören?",
+        "options": ["Thermometer", "Stethoskop", "Röntgengerät", "Blutdruckmessgerät"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was sagt man, um einen Patienten zu fragen, wo es weh tut?",
+        "options": ["Wo sind Sie geboren?", "Wo tut es weh?", "Wo wohnen Sie?", "Wo arbeiten Sie?"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie heißt der Bereich im Krankenhaus, wo Röntgenaufnahmen gemacht werden?",
+        "options": ["Notaufnahme", "Radiologie", "Intensivstation", "Operationssaal"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was bedeutet 'Atemnot'?",
+        "options": ["Kopfschmerzen", "Schwierigkeiten beim Atmen", "Magenschmerzen", "Fieber"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie lautet die Anweisung, um einen Patienten zu bitten, sich hinzusetzen?",
+        "options": ["Bitte stehen Sie auf.", "Bitte legen Sie sich hin.", "Bitte setzen Sie sich.", "Bitte gehen Sie weiter."],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Welches Wort beschreibt die 'Dosis' eines Medikaments?",
+        "options": ["Menge", "Flasche", "Tablette", "Rezept"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Wie sagt man 'to prepare a patient for an X-ray' auf Deutsch?",
+        "options": ["Patienten für eine Operation vorbereiten", "Patienten für eine Röntgenaufnahme vorbereiten", "Patienten für einen Bluttest vorbereiten", "Patienten für eine Infusion vorbereiten"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie sagt man 'to check the pulse' auf Deutsch?",
+        "options": ["Blutdruck messen", "Puls überprüfen", "Temperatur messen", "Blutprobe nehmen"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was bedeutet 'Notaufnahme' im Krankenhaus?",
+        "options": ["Operationssaal", "Röntgenabteilung", "Intensivstation", "Unfall- und Notfallabteilung"],
+        "correctAnswer": 3
+    },
+    {
+        "question": "Wie lautet die Anweisung, um einen Patienten zu bitten, die Kleidung auszuziehen für eine Untersuchung?",
+        "options": ["Bitte ziehen Sie die Schuhe an.", "Bitte ziehen Sie die Kleidung aus.", "Bitte ziehen Sie die Jacke an.", "Bitte ziehen Sie die Socken aus."],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Wort beschreibt eine 'Entzündung' im medizinischen Kontext?",
+        "options": ["Verstauchung", "Infektion oder Schwellung", "Knochenbruch", "Blutgerinnsel"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was sagt eine Krankenschwester, wenn sie einen Patienten bittet, die Hand zu heben?",
+        "options": ["Bitte heben Sie den Kopf.", "Bitte heben Sie die Hand.", "Bitte heben Sie das Bein.", "Bitte heben Sie die Schulter."],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie heißt das Gerät, das die Sauerstoffsättigung im Blut misst?",
+        "options": ["Thermometer", "Blutdruckmessgerät", "Pulsoximeter", "Stethoskop"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Was bedeutet 'Medikament' auf Deutsch?",
+        "options": ["Arzt", "Krankheit", "Heilmittel", "Verband"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Wie sagt man 'to clean a wound' auf Deutsch?",
+        "options": ["Eine Wunde nähen", "Eine Wunde reinigen", "Eine Wunde verbinden", "Eine Wunde kühlen"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Wort wird für 'Gipsverband' verwendet, um einen Knochenbruch zu stabilisieren?",
+        "options": ["Pflaster", "Schiene", "Gips", "Bandage"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Was sagt man, um einen Patienten zu fragen, ob er Allergien hat?",
+        "options": ["Haben Sie Fieber?", "Haben Sie Schmerzen?", "Haben Sie Allergien?", "Haben Sie Hunger?"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Wie heißt der Bereich im Krankenhaus, wo Patienten nach Operationen überwacht werden?",
+        "options": ["Radiologie", "Aufwachraum", "Notaufnahme", "Apotheke"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Was bedeutet 'Fieber' im medizinischen Kontext?",
+        "options": ["Niedrige Temperatur", "Hohe Temperatur", "Schwacher Puls", "Schwere Verletzung"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie lautet die Anweisung, um einen Patienten zu bitten, den Atem anzuhalten während einer Röntgenaufnahme?",
+        "options": ["Atmen Sie tief ein.", "Halten Sie den Atem an.", "Atmen Sie schnell aus.", "Atmen Sie normal."],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Welches Wort beschreibt die 'Infusion' in einem Krankenhaus?",
+        "options": ["Tablette", "Flüssigkeit über Vene", "Spritze", "Pflaster"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Wie sagt man 'to examine an X-ray image' auf Deutsch?",
+        "options": ["Röntgenbild aufnehmen", "Röntgenbild untersuchen", "Röntgenbild drucken", "Röntgenbild archivieren"],
+        "correctAnswer": 1
+    }
+]
