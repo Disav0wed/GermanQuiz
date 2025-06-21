@@ -133,8 +133,12 @@
         // Update navigation buttons
         function updateNavigationButtons() {
             prevBtn.disabled = currentQuestionIndex === 0;
-            nextBtn.disabled = currentQuestionIndex === currentQuestions.length - 1;
-            if (currentQuestionIndex === currentQuestions.length - 1 && answers[currentQuestionIndex] !== null) {
+            // Enable "Next" if not on last question and current question is unanswered
+            // Enable "Finish" on last question regardless of answers
+            nextBtn.disabled = currentQuestionIndex < currentQuestions.length - 1
+                ? answers[currentQuestionIndex] === null
+                : false;
+            if (currentQuestionIndex === currentQuestions.length - 1) {
                 nextBtn.textContent = 'Finish';
             } else {
                 nextBtn.textContent = 'Next';
@@ -164,7 +168,7 @@
         function showResult() {
             quizDiv.classList.add('hidden');
             resultDiv.classList.remove('hidden');
-            scoreText.textContent = `You scored ${score} out of ${currentQuestions.length}!`;
+            scoreText.textContent = `You scored ${score} out of ${currentQuestions.length} (answered ${answers.filter(a => a !== null).length} questions)!`;
         }
 
         // Restart quiz
