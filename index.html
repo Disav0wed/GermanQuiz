@@ -6,10 +6,11 @@
     <title>Quiz App</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex justify-center items-center h-screen">
+<body class="bg-gray-100 flex justify-center items-center h-screen flex-col">
     <div id="app" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <!-- User Section -->
         <div id="user-section">
+            <img src="https://raw.githubusercontent.com/Disav0wed/GermanQuiz/main/logo.jpg" alt="Quiz App Logo" class="max-w-[200px] w-full h-auto mx-auto mb-4">
             <h2 class="text-2xl font-bold mb-4 text-center">Quiz App</h2>
             <div id="quiz-setup" class="mb-4">
                 <label for="num-questions" class="block mb-2">Number of Questions:</label>
@@ -101,6 +102,7 @@
 
         // Display current question
         function displayQuestion() {
+            selectedAnswer = null; // Reset selected answer
             const question = currentQuestions[currentQuestionIndex];
             questionText.textContent = `${currentQuestionIndex + 1}. ${question.question}`;
             optionsDiv.innerHTML = '';
@@ -108,13 +110,11 @@
                 const btn = document.createElement('button');
                 btn.className = 'w-full p-2 border rounded hover:bg-gray-100';
                 btn.textContent = option;
+                btn.disabled = answers[currentQuestionIndex] !== null; // Disable if answered
                 if (answers[currentQuestionIndex] === index) {
                     btn.classList.add(
                         index === question.correctAnswer ? 'bg-green-200' : 'bg-red-200'
                     );
-                    btn.disabled = true;
-                } else {
-                    btn.disabled = false; // Ensure buttons are clickable if unanswered
                 }
                 btn.addEventListener('click', () => checkAnswer(index, btn));
                 optionsDiv.appendChild(btn);
